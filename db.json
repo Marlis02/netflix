@@ -1,6 +1,134 @@
 {
-  "products": [],
+  "products": [
+    {
+      "title": "sdf",
+      "description": "sdf",
+      "image": "sdfsdf",
+      "id": 4
+    },
+    {
+      "title": "deadpul",
+      "description": "ksdjkfjsdfkha sklaptop  notebool slymydsg=",
+      "image": "https://theimageconference.org/wp-content/uploads/2019/11/vancouver_image_conference_2.jpg",
+      "id": 5
+    },
+    {
+      "title": "batman",
+      "description": "shfsd dhf sdfjshf sdfjhsdjfhsjdfhjsakhf jdhf s",
+      "image": "https://media.istockphoto.com/id/1322277517/photo/wild-grass-in-the-mountains-at-sunset.jpg?s=612x612&w=0&k=20&c=6mItwwFFGqKNKEAzv0mv6TaxhLN3zSE43bWmFN--J5w=",
+      "id": 6
+    },
+    {
+      "title": "aitbek",
+      "description": "sdghdfhashdf",
+      "image": "https://www.w3schools.com/css/img_5terre.jpg",
+      "id": 7
+    },
+    {
+      "title": "jgg",
+      "description": "jhjh",
+      "image": "jhjh",
+      "id": 8
+    },
+    {
+      "title": "das",
+      "description": "daS",
+      "image": "DAS",
+      "id": 9
+    },
+    {
+      "title": "fasd",
+      "description": "fads",
+      "image": "fsd",
+      "id": 10
+    },
+    {
+      "title": "fasd",
+      "description": "fads",
+      "image": "fsd",
+      "id": 11
+    },
+    {
+      "id": 12
+    },
+    {
+      "title": "",
+      "description": "",
+      "image": "",
+      "id": 13
+    },
+    {
+      "title": "",
+      "description": "",
+      "image": "",
+      "url": "https://firebasestorage.googleapis.com/v0/b/zetflix-f5f6e.appspot.com/o/videos%2Fproduction_id_4232194%20(2160p).mp4?alt=media&token=293ab5a6-ec31-4878-9af7-62f3a594f84a",
+      "id": 14
+    },
+    {
+      "title": "",
+      "description": "",
+      "image": "",
+      "url": "https://firebasestorage.googleapis.com/v0/b/zetflix-f5f6e.appspot.com/o/videos%2Fproduction_id_4232194%20(2160p).mp4?alt=media&token=bde0a813-20be-4241-9c29-a478ae89e539",
+      "id": 15
+    },
+    {
+      "title": "daS",
+      "description": "DAS",
+      "image": "asd",
+      "url": "https://firebasestorage.googleapis.com/v0/b/zetflix-f5f6e.appspot.com/o/videos%2Fproduction_id_4232194%20(2160p).mp4?alt=media&token=8929173d-abdf-4748-983f-4b9610349229",
+      "id": 16
+    }
+  ],
   "categories": [],
-  "cart": [],
+  "cart": [
+    {
+      "email": "sdfsd@gmail.com",
+      "password": "123",
+      "confirmPassword": "123",
+      "id": 1
+    },
+    {
+      "email": "ghdkshg@gamil.com",
+      "password": "123",
+      "confirmPassword": "123",
+      "id": 2
+    },
+    {
+      "email": "becausemirbek@gmail.ru",
+      "password": "12",
+      "confirmPassword": "12",
+      "id": 3
+    },
+    {
+      "email": "jjj623672@gmail.com",
+      "password": "12345",
+      "confirmPassword": "12345",
+      "id": 4
+    },
+    {
+      "email": "sdf@gmail.com",
+      "password": "123",
+      "confirmPassword": "123",
+      "id": 5
+    },
+    {
+      "email": "sdhgjshfjgdhfjkgkjdfjk@gmail.com",
+      "password": "qw12",
+      "confirmPassword": "qw12",
+      "id": 6
+    },
+    {
+      "email": "sdf@gmail.com",
+      "password": "123",
+      "confirmPassword": "123",
+      "id": 7
+    },
+    {
+      "email": "sdfsdf@gmail.com",
+      "password": "123",
+      "confirmPassword": "123",
+      "id": 8
+    }
+  ],
   "favorites": []
 }

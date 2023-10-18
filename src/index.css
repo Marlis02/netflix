@@ -5,7 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: rgb(35, 40, 43);
+  background-color: rgb(16, 21, 24);
   color: #fff;
 }
 
@@ -16,4 +16,5 @@ code {
 * {
   margin: 0;
   padding: 0;
+  text-decoration: none;
 }
