@@ -19,7 +19,7 @@ export default function Footer() {
               : theme.palette.grey[800],
           p: 6,
           backgroundColor: "rgba(0, 0, 0, 0.362)",
-          mt: "380px",
+          mt: "50px",
         }}
       >
         <Container maxWidth="lg">

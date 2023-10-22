@@ -91,7 +91,7 @@ const EditProduct = () => {
   };
   return (
     <div style={{ width: "50%", margin: "0 auto" }}>
-      <h3>Create Product</h3>
+      <h3>Edit Product</h3>
       <div
         style={{
           display: "flex",
@@ -168,7 +168,7 @@ const EditProduct = () => {
         </Button>
 
         <Button type="submit" variant="outlined">
-          Create
+          Edit
         </Button>
       </form>
     </div>

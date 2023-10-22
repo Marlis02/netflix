@@ -46,7 +46,7 @@ const Carousel = () => {
             Магеллана. Узнав, что Салли знаком с Сэмом, Нейтан соглашается на
             авантюру, надеясь также отыскать и брата.
           </p>
-          <NavLink to="/detail/JLpdFoYLQaxWMf0t5ICD">
+          <NavLink to="/detail/0ksXGliF756C9UhW6sz1">
             <Button style={{}} className="slide_btn" variant="contained">
               <PlayArrowIcon /> Play
             </Button>

@@ -51,9 +51,8 @@ const Home = () => {
             flexDirection: "column",
           }}
         >
-          <h3>Новые фильмы</h3>
           <TextField
-            style={{ marginTop: "10px" }}
+            style={{ marginTop: "10px", width: "500px" }}
             type="text"
             placeholder="Search by title"
             value={searchQuery}
@@ -69,7 +68,7 @@ const Home = () => {
             <p>No products available for this search.</p>
           )}
         </div>
-        <div className="pagination">
+        <div className="pagination" style={{ display: "flex" }}>
           <Button
             variant="contained"
             onClick={handlePrevPage}
@@ -77,7 +76,17 @@ const Home = () => {
           >
             Previous
           </Button>
-          <span className="page-number">Page {currentPage}</span>
+          <span
+            style={{
+              width: "50px",
+              // background: "red",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            {currentPage}
+          </span>
           <Button
             variant="contained"
             onClick={handleNextPage}
