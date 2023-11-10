@@ -178,5 +178,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-
-// auth
