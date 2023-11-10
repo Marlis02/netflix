@@ -27,6 +27,11 @@ const CustomCard = ({ product, mylist }) => {
   const deleteProd = (id) => {
     deleteProductById(id);
   };
+
+  const onFavorite = (productId) => {
+    localStorage.setItem("id", productId);
+    console.log(productId);
+  };
   return (
     <div className="card_container">
       <img className="card_img" src={product.image} alt="aaa" />
@@ -43,7 +48,11 @@ const CustomCard = ({ product, mylist }) => {
             Подробнее
           </button>
           <button className="card_btn2">
-            <LuBookmark color="white" size={20} />
+            <LuBookmark
+              color="white"
+              size={20}
+              onClick={() => onFavorite(product.id)}
+            />
           </button>
           {mylist && (
             <>

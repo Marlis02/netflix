@@ -31,15 +31,15 @@ const Routing = () => {
         <Route path="/sign-in" element={<SignIn />} />
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
-        <Route element={<PrivateRoutes />}>
-          <Route path="/create-product" element={<CreateProduct />} />
-          <Route path="/my-list" element={<MyList />} />
-          <Route path="/movies" element={<Movies />} />
-          <Route path="*" element={<NotFoundPage />} />
-          <Route path="/favorites" element={<Favorite />} />
-          <Route path="/detail/:id" element={<DetailPage />} />
-          <Route path="/editproduct/:id" element={<EditProduct />} />
-        </Route>
+        {/* <Route element={<PrivateRoutes />}> */}
+        <Route path="/create-product" element={<CreateProduct />} />
+        <Route path="/my-list" element={<MyList />} />
+        <Route path="/movies" element={<Movies />} />
+        <Route path="*" element={<NotFoundPage />} />
+        <Route path="/favorites" element={<Favorite />} />
+        <Route path="/detail/:id" element={<DetailPage />} />
+        <Route path="/editproduct/:id" element={<EditProduct />} />
+        {/* </Route> */}
       </Routes>
     </div>
   );

@@ -165,6 +165,8 @@ const ProductContextProvider = ({ children }) => {
     try {
       await deleteDoc(productRef);
       console.log("Product successfully deleted!");
+      toast.success("deleted");
+      getProducts();
     } catch (error) {
       console.error("Error deleting product:", error);
     }
