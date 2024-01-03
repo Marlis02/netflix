@@ -27,7 +27,7 @@ const Carousel = () => {
         modules={[Autoplay, Pagination, Navigation]}
         className="myswiper"
         autoplay={{
-          delay: 5000,
+          delay: 3000,
           disableOnInteraction: false,
         }}
       >

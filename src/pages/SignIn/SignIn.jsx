@@ -104,6 +104,31 @@ const SignIn = () => {
           >
             Submit
           </Button>
+          <div className="link_sign">
+            <p style={{ color: "rgb(115,115,115)", fontWeight: "500" }}>
+              <Link
+                to="/forgot-password"
+                style={{
+                  // textDecoration: "n",
+                  color: "white",
+                  fontWeight: "600",
+                }}
+              >
+                {" "}
+                Forgot your password please follow the link{" "}
+              </Link>
+              {/* <Link
+                to="/sign-up"
+                style={{
+                  textDecoration: "none",
+                  color: "white",
+                  fontWeight: "600",
+                }}
+              >
+                {" "}
+              </Link> */}
+            </p>
+          </div>
         </form>
       </div>
     </div>

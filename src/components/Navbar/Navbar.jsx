@@ -52,26 +52,26 @@ const Navbar = () => {
           >
             Home
           </NavLink>
-          {/* {isAdmin && ( */}
-          <NavLink
-            to="/movies"
-            className={`nav_link ${
-              location.pathname === "/movies" ? "active" : ""
-            }`}
-          >
-            Movies
-          </NavLink>
-          {/* // )} */}
-          {/* {isAdmin && ( */}
-          <NavLink
-            to="/my-list"
-            className={`nav_link ${
-              location.pathname === "/my-list" ? "active" : ""
-            }`}
-          >
-            My List
-          </NavLink>
-          {/* // )} */}
+          {isAdmin && (
+            <NavLink
+              to="/movies"
+              className={`nav_link ${
+                location.pathname === "/movies" ? "active" : ""
+              }`}
+            >
+              Movies
+            </NavLink>
+          )}
+          {isAdmin && (
+            <NavLink
+              to="/my-list"
+              className={`nav_link ${
+                location.pathname === "/my-list" ? "active" : ""
+              }`}
+            >
+              My List
+            </NavLink>
+          )}
           <NavLink
             to="/about"
             className={`nav_link ${
@@ -80,16 +80,16 @@ const Navbar = () => {
           >
             About us
           </NavLink>
-          {/* {isAdmin && ( */}
-          <NavLink
-            to="/create-product"
-            className={`nav_link ${
-              location.pathname === "/create-product" ? "active" : ""
-            }`}
-          >
-            Create product
-          </NavLink>
-          {/* )} */}
+          {isAdmin && (
+            <NavLink
+              to="/create-product"
+              className={`nav_link ${
+                location.pathname === "/create-product" ? "active" : ""
+              }`}
+            >
+              Create product
+            </NavLink>
+          )}
         </div>
         <div>
           {/* <Button variant="contained">Login</Button> */}
@@ -140,18 +140,18 @@ const Navbar = () => {
                     </NavLink>
                   </>
                 )}
-                {/* {!isAdmin && ( */}
-                <>
-                  <NavLink to="/sign-in">
-                    <Button
-                      style={{ marginTop: "10px" }}
-                      variant="contained"
-                      className="auth_btn"
-                    >
-                      Sign in
-                    </Button>
-                  </NavLink>
-                  {/* <NavLink to="/sign-up">
+                {!isAdmin && (
+                  <>
+                    <NavLink to="/sign-in">
+                      <Button
+                        style={{ marginTop: "10px" }}
+                        variant="contained"
+                        className="auth_btn"
+                      >
+                        Sign in
+                      </Button>
+                    </NavLink>
+                    <NavLink to="/sign-up">
                       <Button
                         style={{ marginTop: "10px" }}
                         variant="contained"
@@ -159,10 +159,9 @@ const Navbar = () => {
                       >
                         Sign up
                       </Button>
-                    </NavLink> */}
-                </>
-                {/* )} */}
-
+                    </NavLink>
+                  </>
+                )}
                 {/* {a && (
                   <NavLink to="/sign-up">
                     <Button variant="outlined">Logout</Button>

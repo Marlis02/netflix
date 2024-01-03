@@ -1,21 +1,23 @@
 import axios from "axios";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  sendPasswordResetEmail,
+} from "firebase/auth";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { auth } from "../firebase";
 export const authContext = React.createContext();
 //==========================================================
 const API = "http://34.141.12.192/";
 
 const AuthContextProvider = ({ children }) => {
   //----------------test-----------
-  const auth = () => {
-    console.log("auth");
-  };
 
-  const handleSignUp = async (data, navigate) => {
+  const handleSignUp = async (data) => {
     try {
-      await axios.post(`http://34.141.12.192/api/v1/account/register/`, data);
-      navigate("/sign-in");
+      await createUserWithEmailAndPassword(auth, data.email, data.password);
       toast.success("yes");
     } catch (error) {
       console.log(error);
@@ -23,49 +25,104 @@ const AuthContextProvider = ({ children }) => {
   };
   const handleSignIn = async (data, navigate) => {
     try {
-      const response = await axios.post(
-        "http://34.141.12.192/api/v1/account/login/",
-        data
+      const userCredential = await signInWithEmailAndPassword(
+        auth,
+        data.email,
+        data.password
       );
+      const user = userCredential.user;
 
-      const tokens = response.data;
+      // Токен доступа (ID token)
+      const idToken = await user.getIdToken();
 
-      // Сохраняем токены в локальное хранилище
-      localStorage.setItem("tokens", JSON.stringify(tokens));
-      localStorage.setItem("email", data.email);
+      // Токен обновления (Refresh token)
+      const refreshToken = user.refreshToken;
 
-      toast.success("Успешная аутентификация!");
-      navigate("/");
+      // Другие данные пользователя, если необходимо
+      const displayName = user.displayName;
+      const email = user.email;
+
+      // Сохранение данных в localStorage или другое место по вашему выбору
+      localStorage.setItem("idToken", idToken);
+      localStorage.setItem("refreshToken", refreshToken);
+      localStorage.setItem("displayName", displayName);
+      localStorage.setItem("email", email);
+      localStorage.setItem("favorites", JSON.stringify([]));
+
+      toast.success("Успешный вход");
+
+      setTimeout(() => {
+        // Обновление страницы после успешного выхода
+        navigate("/");
+        window.location.reload(true);
+      }, 1000);
     } catch (error) {
-      console.log(error);
+      console.error("Ошибка при входе пользователя:", error);
+      toast.error("Ошибка входа. Пожалуйста, проверьте ваш email и пароль.");
     }
   };
 
-  const handleSignOut = () => {
-    localStorage.removeItem("tokens");
-    localStorage.removeItem("email");
+  // const handleSignIn = async (data, navigate) => {
+  //   try {
+  //     const response = await axios.post(
+  //       "http://34.141.12.192/api/v1/account/login/",
+  //       data
+  //     );
+
+  //     const tokens = response.data;
+
+  //     // Сохраняем токены в локальное хранилище
+  //     localStorage.setItem("tokens", JSON.stringify(tokens));
+  //     localStorage.setItem("email", data.email);
+
+  //     toast.success("Успешная аутентификация!");
+  //     navigate("/");
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
+
+  // const handleSignOut = () => {
+  //   localStorage.removeItem("tokens");
+  //   localStorage.removeItem("email");
+  // };
+  const handleSignOut = async () => {
+    try {
+      await auth.signOut();
+      localStorage.removeItem("idToken");
+      localStorage.removeItem("refreshToken");
+      localStorage.removeItem("displayName");
+      localStorage.removeItem("email");
+      localStorage.removeItem("favorites");
+      toast.success("Выход выполнен успешно");
+
+      setTimeout(() => {
+        // Обновление страницы после успешного выхода
+        window.location.reload(true);
+      }, 1500);
+    } catch (error) {
+      console.error("Ошибка при выходе пользователя:", error);
+      toast.error("Ошибка выхода. Пожалуйста, попробуйте ещё раз.");
+    }
   };
 
-  const changePassword = async (data, navigate) => {
+  const forgotPass = async (email) => {
     try {
-      await axios.post(
-        `http://34.141.12.192/api/v1/account/change_password/`,
-        data
-      );
-      navigate("/sign-in");
-      toast.success("yes");
+      await sendPasswordResetEmail(auth, email);
+      alert("Письмо для сброса пароля отправлено на " + email);
+      // navigate("/sign-in");
     } catch (error) {
-      console.log(error);
+      console.error("Ошибка при отправке письма для сброса пароля:", error);
     }
   };
   //-------------------------------
   return (
     <authContext.Provider
       value={{
-        auth,
         handleSignUp,
         handleSignIn,
         handleSignOut,
+        forgotPass,
       }}
     >
       {children}

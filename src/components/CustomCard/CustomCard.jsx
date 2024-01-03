@@ -6,11 +6,14 @@ import { useNavigate } from "react-router-dom";
 import { productContext } from "../../context/productContext";
 import { MdDeleteForever } from "react-icons/md";
 import { FiEdit3 } from "react-icons/fi";
+import { favoriteContext } from "../../context/favoriteContext";
+import { toast } from "react-toastify";
 
-const CustomCard = ({ product, mylist }) => {
+const CustomCard = ({ product, mylist, fav }) => {
   const navigate = useNavigate();
   const { products, getProducts, getProductById, deleteProductById } =
     useContext(productContext);
+  const { removeProductIdFromLocalStorage } = useContext(favoriteContext);
   useEffect(() => {
     getProducts();
   }, []);
@@ -28,10 +31,34 @@ const CustomCard = ({ product, mylist }) => {
     deleteProductById(id);
   };
 
-  const onFavorite = (productId) => {
-    localStorage.setItem("id", productId);
-    console.log(productId);
+  const removeFromFav = (id, title) => {
+    removeProductIdFromLocalStorage(id, title);
   };
+
+  // const onFavorite = (productId) => {
+  //   localStorage.setItem("id", productId);
+  //   console.log(productId);
+  // };
+
+  const onFavorite = (productId, title) => {
+    // Получаем текущий массив из localStorage или создаем новый пустой массив
+    let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+
+    // Проверяем, содержится ли productId в массиве
+    if (!favorites.includes(productId)) {
+      // Если нет, добавляем productId в массив
+      favorites.push(productId);
+
+      // Сохраняем обновленный массив в localStorage
+      localStorage.setItem("favorites", JSON.stringify(favorites));
+
+      toast.success(title + " добавлен в избранное");
+    } else {
+      // Если productId уже есть в массиве, можно решить удалить его или проигнорировать
+      toast.warning(`${title} уже находится в избранном`);
+    }
+  };
+
   return (
     <div className="card_container">
       <img className="card_img" src={product.image} alt="aaa" />
@@ -47,13 +74,7 @@ const CustomCard = ({ product, mylist }) => {
           >
             Подробнее
           </button>
-          <button className="card_btn2">
-            <LuBookmark
-              color="white"
-              size={20}
-              onClick={() => onFavorite(product.id)}
-            />
-          </button>
+
           {mylist && (
             <>
               <button className="card_btn2">
@@ -70,6 +91,24 @@ const CustomCard = ({ product, mylist }) => {
                 <MdDeleteForever color="white" size={20} />
               </button>
             </>
+          )}
+          {fav ? (
+            <>
+              <button
+                onClick={() => removeFromFav(product.id, product.title)}
+                className="card_btn2"
+              >
+                <MdDeleteForever color="white" size={20} />
+              </button>
+            </>
+          ) : (
+            <button className="card_btn2">
+              <LuBookmark
+                color="white"
+                size={20}
+                onClick={() => onFavorite(product.id, product.title)}
+              />
+            </button>
           )}
         </div>
       </div>

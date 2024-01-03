@@ -18,9 +18,9 @@ const SignUp = () => {
   const { handleSignUp } = useContext(authContext);
   const navigate = useNavigate();
 
-  const onSubmit = (data, navigate) => {
+  const onSubmit = (data) => {
     console.log(data);
-    handleSignUp(data, navigate);
+    handleSignUp(data);
   };
   return (
     <div className="sign_up">

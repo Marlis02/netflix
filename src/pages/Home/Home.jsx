@@ -4,7 +4,8 @@ import CustomCard from "../../components/CustomCard/CustomCard";
 import { Button, TextField } from "@mui/material";
 import Carousel from "../../components/Carousel/Carousel";
 import { productContext } from "../../context/productContext";
-
+import { GrFormPrevious } from "react-icons/gr";
+import { GrFormNext } from "react-icons/gr";
 const ITEMS_PER_PAGE = 4;
 
 const Home = () => {
@@ -52,9 +53,9 @@ const Home = () => {
           }}
         >
           <TextField
-            style={{ marginTop: "10px", width: "500px" }}
+            style={{ marginTop: "10px", width: "500px", height: "10px" }}
             type="text"
-            placeholder="Search by title"
+            label="Search by title"
             value={searchQuery}
             onChange={handleSearchChange}
           />
@@ -74,7 +75,7 @@ const Home = () => {
             onClick={handlePrevPage}
             disabled={currentPage === 1}
           >
-            Previous
+            <GrFormPrevious size={30} color="white" />
           </Button>
           <span
             style={{
@@ -92,7 +93,7 @@ const Home = () => {
             onClick={handleNextPage}
             disabled={currentPage * ITEMS_PER_PAGE >= filteredProducts.length}
           >
-            Next
+            <GrFormNext size={30} />
           </Button>
         </div>
       </div>
